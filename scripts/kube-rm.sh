@@ -1,0 +1,1 @@
+kubectl delete deployment centari-weaviate

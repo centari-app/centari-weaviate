@@ -38,4 +38,10 @@ ENTRYPOINT ["/bin/weaviate"]
 COPY --from=server_builder /weaviate-server /bin/weaviate
 RUN apk add --no-cache --upgrade ca-certificates openssl
 RUN mkdir ./modules
+ENV AUTHENTICATION_ANONYMOUS_ACCESS_ENABLED=true
+ENV CLUSTER_HOSTNAME="node1"
+ENV DEFAULT_VECTORIZER_MODULE="text2vec-openai"
+ENV ENABLE_MODULES=text2vec-openai,qna-openai
+ENV PERSISTENCE_DATA_PATH="/var/data"
 CMD [ "--host", "0.0.0.0", "--port", "8080", "--scheme", "http"]
+EXPOSE 8080

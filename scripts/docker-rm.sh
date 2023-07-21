@@ -1,0 +1,1 @@
+docker rmi centari-weaviate:latest
